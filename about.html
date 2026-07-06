@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — 高橋 航 / Wataru Takahashi</title>
+<meta name="description" content="建設コンサルタントの現場でAIツールをつくる、高橋航のプロフィール。経歴・強み・スキル・できること。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0a0a; --bg-2:#101012;
+    --surface:rgba(255,255,255,.03); --surface-2:rgba(255,255,255,.05);
+    --border:rgba(255,255,255,.08); --border-2:rgba(255,255,255,.16);
+    --text-hi:#fafafa; --text-lo:#a3a3a3; --text-body:#d4d4d4; --dim:#737373;
+    --accent:#a5b4fc; --accent-dim:rgba(165,180,252,.14);
+    --font-ui:"Inter","Noto Sans JP",sans-serif;
+    --font-mono:"JetBrains Mono",monospace;
+    --container:1120px; --nav-h:64px; --ease:cubic-bezier(.22,1,.36,1);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--bg); color:var(--text-body); font-family:var(--font-ui);
+    line-height:1.8; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  ::selection { background:var(--accent); color:#0a0a0a; }
+  .container { max-width:var(--container); margin:0 auto; padding:0 24px; }
+  a { color:inherit; text-decoration:none; }
+
+  h1,h2,h3 {
+    font-weight:600; letter-spacing:-.02em; line-height:1.25;
+    background:linear-gradient(to bottom,#fafafa,#a3a3a3);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+  }
+  .eyebrow {
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:20px; display:block;
+  }
+  section { padding:110px 0; border-top:1px solid var(--border); }
+  .sec-head { max-width:640px; margin-bottom:56px; }
+  .sec-head h2 { font-size:clamp(28px,3.4vw,42px); }
+  .sec-head p { margin-top:16px; color:var(--text-lo); font-size:15px; }
+
+  /* editable placeholder slot */
+  .todo { color:var(--dim); border-bottom:1px dashed rgba(255,255,255,.2); }
+
+  /* ================= NAV ================= */
+  nav {
+    position:fixed; inset:0 0 auto 0; z-index:50; height:var(--nav-h);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    background:rgba(10,10,10,.6); border-bottom:1px solid var(--border);
+  }
+  nav .container { height:100%; display:flex; align-items:center; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:600; color:var(--text-hi); font-size:15px; }
+  .brand-mark { width:22px; height:22px; border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, #e0e7ff, var(--accent) 45%, #312e81 100%); }
+  .nav-links { display:flex; gap:4px; }
+  .nav-links a { font-size:13px; color:var(--text-lo); padding:8px 14px; border-radius:999px; transition:all .3s var(--ease); }
+  .nav-links a:hover, .nav-links a.active { color:var(--text-hi); background:var(--surface); }
+  .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 22px; border-radius:999px;
+    font-size:14px; font-weight:500; border:1px solid var(--border-2); color:var(--text-hi);
+    transition:all .3s var(--ease); cursor:pointer; background:transparent; }
+  .btn:hover { border-color:var(--text-hi); background:var(--surface); }
+  .btn.primary { background:var(--text-hi); color:#0a0a0a; border-color:var(--text-hi); }
+  .btn.primary:hover { background:#fff; transform:translateY(-1px); }
+  nav .btn { padding:7px 16px; font-size:13px; }
+
+  /* ================= PROFILE HERO ================= */
+  .profile { position:relative; padding:calc(var(--nav-h) + 96px) 0 96px; border-top:none; overflow:hidden; }
+  .spotlight { position:absolute; z-index:0; pointer-events:none; top:-40%; left:-10%; width:140%; height:170%;
+    background:radial-gradient(ellipse 42% 26% at 26% 16%, rgba(255,255,255,.08), transparent 70%);
+    opacity:0; animation:spotlight 2s .2s var(--ease) forwards; }
+  @keyframes spotlight { from{opacity:0; transform:translate(-8%,-14%) scale(.85)} to{opacity:1; transform:none} }
+  .profile-grid { position:relative; z-index:2; display:grid; grid-template-columns:1.3fr .9fr; gap:56px; align-items:center; }
+  .profile h1 { font-size:clamp(36px,5vw,60px); font-variation-settings:"opsz" 32; line-height:1.15; }
+  .profile .role { margin-top:14px; font-family:var(--font-mono); font-size:13px; letter-spacing:.14em; color:var(--accent); text-transform:uppercase; }
+  .profile .lede { margin-top:24px; color:var(--text-body); font-size:16px; max-width:46ch; }
+  .socials { margin-top:32px; display:flex; gap:10px; flex-wrap:wrap; }
+  .socials a { font-family:var(--font-mono); font-size:12px; color:var(--text-lo); border:1px solid var(--border);
+    border-radius:999px; padding:8px 16px; transition:all .3s var(--ease); }
+  .socials a:hover { color:var(--text-hi); border-color:var(--border-2); background:var(--surface); }
+
+  .profile-card { border:1px solid var(--border); border-radius:18px; background:var(--surface); overflow:hidden; }
+  .profile-card .orb-wrap { position:relative; height:150px;
+    background:radial-gradient(ellipse 70% 90% at 50% 0%, rgba(165,180,252,.12), transparent 70%); display:flex; align-items:center; justify-content:center; }
+  .orb { width:120px; height:120px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, rgba(229,231,255,.4), rgba(165,180,252,.14) 45%, transparent 70%);
+    filter:blur(1px); animation:breathe 6s ease-in-out infinite; }
+  @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+  .facts { padding:8px 22px 18px; }
+  .fact { display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:14px 0; border-bottom:1px solid var(--border); }
+  .fact:last-child { border-bottom:none; }
+  .fact span { font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--dim); text-transform:uppercase; white-space:nowrap; }
+  .fact strong { color:var(--text-hi); font-weight:500; font-size:13.5px; text-align:right; }
+
+  /* ================= ABOUT ME ================= */
+  .bio-body { display:flex; flex-direction:column; gap:18px; max-width:62ch; font-size:16px; }
+  .bio-body p { color:var(--text-body); }
+
+  /* ================= ACHIEVEMENTS ================= */
+  .stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .stat { border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:28px 24px; }
+  .stat b { display:block; font-size:34px; font-weight:600; letter-spacing:-.02em; color:var(--text-hi); }
+  .stat .cap { margin-top:8px; font-size:13px; color:var(--text-lo); }
+
+  /* ================= STRENGTHS ================= */
+  .strength-list { display:grid; gap:0; }
+  .strength { display:grid; grid-template-columns:64px 1fr; gap:24px; padding:28px 0; border-bottom:1px solid var(--border); align-items:start; }
+  .strength:first-child { border-top:1px solid var(--border); }
+  .strength .no { font-family:var(--font-mono); font-size:14px; color:var(--accent); letter-spacing:.1em; padding-top:4px; }
+  .strength h3 { font-size:20px; }
+  .strength p { margin-top:8px; color:var(--text-lo); font-size:14.5px; max-width:52ch; }
+
+  /* ================= SKILLS ================= */
+  .skill-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px 48px; }
+  .skill { }
+  .skill-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; }
+  .skill-top .name { color:var(--text-hi); font-size:14px; font-weight:500; }
+  .skill-top .pct { font-family:var(--font-mono); font-size:12px; color:var(--dim); }
+  .bar { height:4px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; }
+  .bar i { display:block; height:100%; width:0; border-radius:999px;
+    background:linear-gradient(90deg, var(--accent), #e0e7ff);
+    transition:width 1.2s var(--ease); }
+  .skill-note { margin-top:32px; font-size:12.5px; color:var(--dim); }
+
+  /* ================= EXPERTISE ================= */
+  .expertise-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .exp-card { border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:26px; transition:border-color .4s var(--ease), transform .4s var(--ease); }
+  .exp-card:hover { border-color:var(--border-2); transform:translateY(-3px); }
+  .exp-card .ic { font-family:var(--font-mono); font-size:12px; color:var(--accent); letter-spacing:.1em; }
+  .exp-card h3 { font-size:17px; margin:14px 0 8px; }
+  .exp-card p { font-size:13.5px; color:var(--text-lo); }
+
+  /* ================= TIMELINE ================= */
+  .timeline { position:relative; margin-left:8px; padding-left:32px; border-left:1px solid var(--border-2); display:flex; flex-direction:column; gap:36px; }
+  .tl-item { position:relative; }
+  .tl-item::before { content:""; position:absolute; left:-40px; top:6px; width:9px; height:9px; border-radius:50%;
+    background:var(--accent); box-shadow:0 0 0 4px rgba(165,180,252,.15); }
+  .tl-item .yr { font-family:var(--font-mono); font-size:12px; color:var(--accent); letter-spacing:.08em; }
+  .tl-item h3 { font-size:18px; margin:6px 0 6px; }
+  .tl-item p { font-size:14px; color:var(--text-lo); max-width:56ch; }
+
+  /* ================= PERSONALITY ================= */
+  .persona-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .persona { border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:22px 24px; }
+  .persona .lbl { font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; color:var(--dim); text-transform:uppercase; }
+  .persona .val { margin-top:10px; color:var(--text-hi); font-size:15px; font-weight:500; }
+
+  /* ================= VISION / CLOSING ================= */
+  .vision { text-align:center; }
+  .vision .big { font-size:clamp(30px,4.4vw,54px); font-weight:600; letter-spacing:-.02em; line-height:1.3; max-width:16ch; margin:0 auto;
+    background:linear-gradient(to bottom,#fafafa,#a3a3a3); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .vision p { max-width:52ch; margin:28px auto 0; color:var(--text-lo); font-size:15.5px; }
+
+  /* ================= CONTACT ================= */
+  .contact { position:relative; text-align:center; overflow:hidden; }
+  .contact .spotlight { animation:none; opacity:.55; top:-30%; left:-20%;
+    background:radial-gradient(ellipse 40% 30% at 50% 20%, rgba(255,255,255,.07), transparent 70%); }
+  .contact h2 { font-size:clamp(32px,4.6vw,52px); position:relative; z-index:2; }
+  .contact p { position:relative; z-index:2; margin:22px auto 36px; color:var(--text-lo); max-width:44ch; }
+  .contact .btn { position:relative; z-index:2; }
+  .contact-mail { position:relative; z-index:2; display:block; margin-top:24px;
+    font-family:var(--font-mono); font-size:13px; color:var(--dim); letter-spacing:.06em; }
+  .contact-mail:hover { color:var(--text-hi); }
+
+  /* ================= FOOTER ================= */
+  footer { border-top:1px solid var(--border); padding:56px 0 40px; }
+  .foot-mark { font-weight:700; letter-spacing:-.04em; line-height:.85; font-size:clamp(48px,10vw,130px); white-space:nowrap;
+    background:linear-gradient(to bottom, rgba(250,250,250,.14), rgba(250,250,250,.02));
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; user-select:none; }
+  .foot-row { margin-top:36px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+  .foot-row small { font-family:var(--font-mono); font-size:11px; color:var(--dim); letter-spacing:.1em; }
+  .foot-row a { font-size:13px; color:var(--text-lo); }
+  .foot-row a:hover { color:var(--text-hi); }
+
+  /* ================= REVEAL ================= */
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+  .reveal.in { opacity:1; transform:none; }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:900px) {
+    .nav-links { display:none; }
+    .profile-grid { grid-template-columns:1fr; gap:36px; }
+    .stat-grid { grid-template-columns:1fr 1fr; }
+    .skill-grid { grid-template-columns:1fr; gap:22px; }
+    .expertise-grid, .persona-grid { grid-template-columns:1fr; }
+    section { padding:80px 0; }
+    .strength { grid-template-columns:44px 1fr; gap:16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="container">
+    <a class="brand" href="index.html"><span class="brand-mark"></span>高橋 航</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="index.html#works">Works</a>
+      <a href="index.html#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="btn primary" href="mailto:wataru.takahashi24@gmail.com">連絡する</a>
+  </div>
+</nav>
+
+<!-- ============ PROFILE HERO ============ -->
+<header class="profile">
+  <div class="spotlight"></div>
+  <div class="container profile-grid">
+    <div>
+      <span class="eyebrow">About</span>
+      <h1>高橋 航<br>Wataru Takahashi</h1>
+      <div class="role">Civil Engineer × AI Tool Builder</div>
+      <p class="lede">建設コンサルタントの現場で困りごとを見つけ、その場でAIツールにして解決する。使う人と作る人が同じだから、道具が現場に根づく。</p>
+      <div class="socials">
+        <a href="mailto:wataru.takahashi24@gmail.com">✉ Email</a>
+        <a href="https://github.com/yubokumin28" target="_blank" rel="noopener">◎ GitHub</a>
+        <a href="index.html#works">▸ Works</a>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="orb-wrap"><div class="orb"></div></div>
+      <div class="facts">
+        <div class="fact"><span>Name</span><strong>高橋 航 / Wataru Takahashi</strong></div>
+        <div class="fact"><span>Field</span><strong>建設コンサルタント × AI開発</strong></div>
+        <div class="fact"><span>Focus</span><strong>積算・公示・設計照査・文書処理</strong></div>
+        <div class="fact"><span>Stack</span><strong>Claude Code / Python / ローカルLLM</strong></div>
+        <div class="fact"><span>Base</span><strong class="todo">（拠点：教えてください）</strong></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ABOUT ME ============ -->
+<section id="bio">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">About Me</span>
+      <h2>実務者であり、道具の作り手。</h2>
+    </div>
+    <div class="bio-body reveal">
+      <p>建設コンサルタント業務に携わりながら、日々の仕事の中で「これは人間がやらなくていい」と感じた作業を、片っ端からAIツールにしてきました。設計書の数量照合、入札資料の伏せ字化、社内文書への質問応答、見積書の構造化 — どれも自分の現場の困りごとから生まれたものです。</p>
+      <p>機密性の高い業務では、データを外部に出さないローカルLLM構成で設計します。そして「動くだけ」で終わらせず、配布版や手順書を用意して、同僚が実際に使い始めるところまでを一つの仕事と考えています。</p>
+      <p>専門は建設 × AIですが、根っこにあるのは「面倒な作業を、道具で消す」という一貫した姿勢です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section id="achievements">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">By the numbers</span>
+      <h2>数字で見る仕事</h2>
+    </div>
+    <div class="stat-grid">
+      <div class="stat reveal"><b>25<span style="font-size:20px">+</span></b><div class="cap">制作した業務ツール</div></div>
+      <div class="stat reveal"><b>100%</b><div class="cap">現場の困りごと起点</div></div>
+      <div class="stat reveal"><b>Local</b><div class="cap">機密はローカルLLMで完結</div></div>
+      <div class="stat reveal"><b>配布</b><div class="cap">同僚が使える形まで完走</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STRENGTHS ============ -->
+<section id="strengths">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Core Strengths</span>
+      <h2>5つの強み</h2>
+    </div>
+    <div class="strength-list">
+      <div class="strength reveal"><div class="no">01</div><div>
+        <h3>現場起点の課題設定</h3>
+        <p>「AIで何かやる」ではなく「この30分の作業を消す」から始める。困りごとの当事者だから、要件定義に時間がかからない。</p></div></div>
+      <div class="strength reveal"><div class="no">02</div><div>
+        <h3>一人でフルスタック完走</h3>
+        <p>要件定義から実装、配布、手順書づくりまで単独で回す。小回りが利き、思いついたその日に形になる。</p></div></div>
+      <div class="strength reveal"><div class="no">03</div><div>
+        <h3>ローカルLLMでの機密対応</h3>
+        <p>建設業務のデータは外に出せないものが多い。機密に触れる処理はローカルLLMで完結させ、安心して使える形にする。</p></div></div>
+      <div class="strength reveal"><div class="no">04</div><div>
+        <h3>0→1の立ち上げ</h3>
+        <p>まだ無いものを、動くところまで持っていく。積算システムも社内BOTも、前例のない場所から立ち上げてきた。</p></div></div>
+      <div class="strength reveal"><div class="no">05</div><div>
+        <h3>配って使われるまで</h3>
+        <p>動くだけのツールは仕事を変えない。自分以外の人が使い始めた時点を「完成」と定義している。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Technical Skills</span>
+      <h2>スキル</h2>
+      <p>下の割合は自己評価の目安です。実感に合わせて自由に調整してください。</p>
+    </div>
+    <div class="skill-grid">
+      <div class="skill reveal"><div class="skill-top"><span class="name">Claude Code / AIエージェント開発</span><span class="pct">95%</span></div><div class="bar"><i data-w="95"></i></div></div>
+      <div class="skill reveal"><div class="skill-top"><span class="name">プロンプト設計</span><span class="pct">90%</span></div><div class="bar"><i data-w="90"></i></div></div>
+      <div class="skill reveal"><div class="skill-top"><span class="name">Python</span><span class="pct">85%</span></div><div class="bar"><i data-w="85"></i></div></div>
+      <div class="skill reveal"><div class="skill-top"><span class="name">ローカルLLM構築（Ollama 等）</span><span class="pct">85%</span></div><div class="bar"><i data-w="85"></i></div></div>
+      <div class="skill reveal"><div class="skill-top"><span class="name">RAG / 社内ドキュメント検索</span><span class="pct">85%</span></div><div class="bar"><i data-w="85"></i></div></div>
+      <div class="skill reveal"><div class="skill-top"><span class="name">Excel / 業務自動化</span><span class="pct">90%</span></div><div class="bar"><i data-w="90"></i></div></div>
+      <div class="skill reveal"><div class="skill-top"><span class="name">PDF / OCR 構造化</span><span class="pct">80%</span></div><div class="bar"><i data-w="80"></i></div></div>
+      <div class="skill reveal"><div class="skill-top"><span class="name">積算システム（.rex 等）</span><span class="pct">80%</span></div><div class="bar"><i data-w="80"></i></div></div>
+    </div>
+    <p class="skill-note">※ 数値はダミーの初期値です。「Claude Codeは満点、Pythonは70%くらい」など、実際の感覚を教えていただければ差し替えます。</p>
+  </div>
+</section>
+
+<!-- ============ EXPERTISE ============ -->
+<section id="expertise">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What I can do</span>
+      <h2>できること</h2>
+    </div>
+    <div class="expertise-grid">
+      <div class="exp-card reveal"><div class="ic">01</div><h3>業務AIツールの開発</h3><p>現場の作業をヒアリングし、専用のAIツールとして形にする。</p></div>
+      <div class="exp-card reveal"><div class="ic">02</div><h3>社内AI / LLM導入支援</h3><p>「社内でAIを使っていいのか」から、実運用までの道筋づくり。</p></div>
+      <div class="exp-card reveal"><div class="ic">03</div><h3>社内ナレッジBOT構築</h3><p>社内フォルダや文書を検索して答えるRAG型BOTの設計・構築。</p></div>
+      <div class="exp-card reveal"><div class="ic">04</div><h3>ローカルLLM環境の設計</h3><p>機密データを外に出さない、社内完結のAI環境をつくる。</p></div>
+      <div class="exp-card reveal"><div class="ic">05</div><h3>ドキュメント処理の自動化</h3><p>見積書・図面・PDF・Excelの読み取りと構造化を自動化する。</p></div>
+      <div class="exp-card reveal"><div class="ic">06</div><h3>建設事務の効率化</h3><p>積算・公示・入札など、建設特有の定型業務を省力化する。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Experience</span>
+      <h2>経歴</h2>
+      <p>この項目は正確な経歴が分からないため下書きです。年・所属・内容を教えていただければ本物に差し替えます。</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="yr todo">（年）</div><h3 class="todo">建設コンサルタント業務に従事</h3><p class="todo">所属・担当業務（積算・公示・設計照査など）をここに。</p></div>
+      <div class="tl-item reveal"><div class="yr todo">（年）</div><h3 class="todo">社内でAIツールづくりを開始</h3><p class="todo">最初に作ったツール、きっかけをここに。</p></div>
+      <div class="tl-item reveal"><div class="yr">2026</div><h3>25以上の業務ツールを制作</h3><p>AI積算システム、社内フォルダ質問BOT（ローカルLLM）、伏せ字作成ツール、見積書構造化など、現場発のツールを継続的に制作・配布。</p></div>
+      <div class="tl-item reveal"><div class="yr">2026</div><h3>ポートフォリオサイトを公開</h3><p>Spline製3Dロボットを自己ホストした個人サイトをGitHub Pagesで公開。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PERSONALITY ============ -->
+<section id="personality">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Personality</span>
+      <h2>人となり</h2>
+      <p>ここは棚倉さんのサイトを真似た「素の自分」枠です。埋めたい項目を教えてください（不要な枠は消せます）。</p>
+    </div>
+    <div class="persona-grid">
+      <div class="persona reveal"><div class="lbl">MBTI</div><div class="val todo">（例：INTJ など）</div></div>
+      <div class="persona reveal"><div class="lbl">大事にしていること</div><div class="val">現場で本当に使われること</div></div>
+      <div class="persona reveal"><div class="lbl">好きなもの</div><div class="val todo">（教えてください）</div></div>
+      <div class="persona reveal"><div class="lbl">休日の過ごし方</div><div class="val todo">（教えてください）</div></div>
+      <div class="persona reveal"><div class="lbl">出身</div><div class="val todo">（教えてください）</div></div>
+      <div class="persona reveal"><div class="lbl">口ぐせ</div><div class="val">「これ、人間がやらなくてよくない？」</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISION ============ -->
+<section id="vision">
+  <div class="container vision">
+    <span class="eyebrow reveal">Vision</span>
+    <div class="big reveal">現場に、AIという道具を。</div>
+    <p class="reveal">華やかなAIではなく、泥くさい現場で本当に使われるAIを。建設という伝統的な業界の内側から、道具づくりでその効率を書き換えていく。誰かの「面倒な30分」を消すことを、これからも続けます。</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+  <div class="spotlight"></div>
+  <div class="container">
+    <span class="eyebrow reveal">Contact</span>
+    <h2 class="reveal">現場の困りごと、<br>道具にしませんか。</h2>
+    <p class="reveal">業務効率化の相談、ツール開発の話、AIの社内導入のことなど、お気軽にどうぞ。</p>
+    <a class="btn primary reveal" href="mailto:wataru.takahashi24@gmail.com">メールを送る</a>
+    <a class="contact-mail reveal" href="mailto:wataru.takahashi24@gmail.com">wataru.takahashi24@gmail.com</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-mark">WATARU TAKAHASHI</div>
+    <div class="foot-row">
+      <small>© 2026 Wataru Takahashi</small>
+      <a href="index.html">← ホームへ戻る</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        // animate skill bars
+        e.target.querySelectorAll('.bar i[data-w]').forEach(bar => { bar.style.width = bar.dataset.w + '%'; });
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold:.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
