@@ -3,7 +3,7 @@
 建設コンサルタントの実務者でありAIツールの作り手、高橋航のポートフォリオサイト。
 ビルド不要の単一HTML。`index.html` をブラウザで開くだけで動作します。
 
-**Live:** _(Vercel URL をここに記載)_
+**Live:** https://yubokumin28.github.io/portfolio/
 
 ## 構成
 
